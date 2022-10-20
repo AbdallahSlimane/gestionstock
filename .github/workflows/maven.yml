@@ -19,7 +19,7 @@ jobs:
           MYSQL_USER: root
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: gestionstock
-        healthcheck:
+        options:
           test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
           timeout: 20s
           retries: 10

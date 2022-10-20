@@ -24,14 +24,18 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Install dependencies
         run: ./mvnw clean install -U
       - name: Connect to MySQL
+        run:
+          mysql start
+          mysql -e 'create database ${{env.MYSQL_DATABASE}};' -u${{ env.MYSQL_USER }} -p${{ env.MYSQL_ROOT_PASSWORD }}
+      - name: Run SpringBoot App
         run: mvnwspring-boot:run
         env:
           MYSQL_HOST: mysql
           MYSQL_PORT: 3306
-          MYSQL_DATABASE: gestionstock

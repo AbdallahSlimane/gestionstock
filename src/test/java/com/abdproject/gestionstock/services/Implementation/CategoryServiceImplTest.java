@@ -35,7 +35,7 @@ public class CategoryServiceImplTest {
     }
 
     @Test
-    public void UpdateCategoryWithSuccess(){
+    public void UpdateCategoryWithSuccess() {
         CategoryDto categoryTested = CategoryDto.builder()
                 .code("cat test")
                 .descritpion("descritption test")
@@ -44,7 +44,7 @@ public class CategoryServiceImplTest {
 
         CategoryDto savedCategory = categoryService.save(categoryTested);
 
-        CategoryDto categoryToUpdate =  savedCategory;
+        CategoryDto categoryToUpdate = savedCategory;
         categoryToUpdate.setCode("Cat update");
 
         savedCategory = categoryService.save(categoryToUpdate);
@@ -55,6 +55,4 @@ public class CategoryServiceImplTest {
         assertEquals(categoryToUpdate.getDescritpion(), savedCategory.getDescritpion());
         assertEquals(categoryToUpdate.getIdentreprise(), savedCategory.getIdentreprise());
     }
-
-
 }

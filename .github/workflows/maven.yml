@@ -16,13 +16,14 @@ jobs:
       mysql:
         image: mysql
         env:
-          MYSQL_USER: root
+          MYSQL_USER: user
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: gestionstock
-        options:
-          test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-          timeout: 20s
-          retries: 10
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
 
     steps:
       - name: Check out repository code

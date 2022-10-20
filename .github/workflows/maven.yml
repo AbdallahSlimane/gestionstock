@@ -9,10 +9,6 @@ on:
 
 
 jobs:
-  tests:
-    name: Unit tests
-    run: mvn -B test
-
   build:
 
     runs-on: ubuntu-latest
